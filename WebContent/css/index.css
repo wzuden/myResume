@@ -1,0 +1,208 @@
+@font-face {
+    font-family: DeliciousRoman;
+    src: url('http://www.font-face.com/fonts/delicious/Delicious-Roman.otf');
+}
+body{
+  font-size: 14px;
+  font-family: DeliciousRoman;
+}
+#header{
+	height:40px;
+	background: url(../images/bg.png) repeat-x;
+  position: relative;
+}
+.logo{
+ float: left;
+ position: relative;
+}
+.logo img{
+   width: 30px;
+   height: 30px;
+   position: absolute;
+   top: 5px;
+   left: 10px;
+   
+}
+.header-nav{
+	  float: right; 
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+}
+.header-nav>li{
+  float: left;
+  margin-right:20px; 
+  padding-right: 15px;
+  position: relative;
+}
+.header-nav>li>a{
+	font-weight: bold;
+	color: #fff;
+}
+.header-nav li i {
+    position: absolute;
+    top: 12px;
+    right: 1px;
+    font-size: 0;
+    height: 0;
+    width: 0;
+    border-width: 5px 4px 0;
+    border-style: solid dashed;
+    border-color: #fff transparent transparent;
+    overflow: hidden;
+    -webkit-transition: all .4s ease 0s;
+    -moz-transition: all .4s ease 0s;
+    -ms-transition: all .4s ease 0s;
+    -o-transition: all .4s ease 0s;
+    transition: all .4s ease 0s;
+}
+.personal-zone div {
+ width: 83px;
+ border: 1px solid #ddd;
+ margin-left: 25px;
+ margin-top: 5px;
+ position:relative; 
+ z-index: 1000;
+}
+.personal-zone div a{
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 20px;
+  background-color: #96b97d;
+  opacity: 0.7;
+
+}
+.wrapper{
+  width: 960px;
+  height: 1800px;
+  margin: 0 auto;
+  overflow: hidden;
+ }
+.wrapper .list{
+  width: 200px;
+  margin-top:200px;
+  margin-right: 10px;
+  float: left;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-radius: 5px;
+  position: fixed;
+}
+.wrapper .list li{
+ height: 50px;
+ line-height:50px;
+ text-align: center;
+ border-bottom: 1px solid #ddd;
+ margin-top: -1px;
+ position: relative;
+ }
+.wrapper .list li i{
+  display:block;
+  width: 18px;
+  height:18px; 
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  background: url(../images/list.png) no-repeat;
+}
+.wrapper .list li i.basic{
+  background-position:0px -56px; 
+}
+.wrapper .list li i.intern{
+  background-position:-25px -57px; 
+}
+.wrapper .list li i.edu{
+  background-position:-58px -55px; 
+}
+.wrapper .list li i.ego{
+  background-position:-91px -54px; 
+}
+.wrapper .list li i.ego{
+  background-position:-91px -54px; 
+}
+.wrapper .list li i.expc{
+  background-position:-129px -54px; 
+}
+.wrapper .list li a{
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+ 
+}
+.list .active a{
+ color:#00b88d;
+}
+p#back-to-top{
+    margin-top:50px;
+    display: none;
+    position:fixed;
+    
+}
+p#back-to-top a{
+    text-align:center;
+    text-decoration:none;
+    color:#d1d1d1;
+    display:block;
+    width:64px;
+    /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+    -moz-transition:color 1s;
+    -webkit-transition:color 1s;
+    -o-transition:color 1s;
+}
+p#back-to-top a span{
+    background:transparent url(../images/totop.png) no-repeat;
+    border-radius:6px;
+    display:block;
+    height:64px;
+    width:56px;
+    margin-bottom:5px;
+    /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+    -moz-transition:background 1s;
+    -webkit-transition:background 1s;
+    -o-transition:background 1s;
+}
+p#back-to-top a:hover{
+    color:#979797;
+}
+.wrapper .main-edit{
+  width: 748px;
+  float: right;
+
+}
+.wrapper .main-edit .module{
+ border:  1px solid #ddd;
+ border-radius: 5px;
+ width: 746px;
+ margin-bottom: 10px;
+}
+.main-edit .module .module-title{
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+}
+.main-edit .module .module-title span{
+  display: block;
+  text-align: center;
+  background-color: #ddd;
+
+}
+.wrapper .main-edit #basicInfo{
+  height: 200px;
+  margin-top: 10px;
+ }
+.wrapper .main-edit #intern-exp{
+  height: 300px;
+}
+.wrapper .main-edit #edu-exp{
+  height: 300px;
+}
+.wrapper .main-edit #ego-des{
+  height: 300px;
+}
+.wrapper .main-edit #expc-job{
+  height: 300px;
+}

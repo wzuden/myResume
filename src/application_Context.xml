@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns ="http://www.springframework.org/schema/beans" 
+    xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation ="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
+    <!-- 登录部分验证 -->
+    <bean id="loginAction" class="com.wzuden.resume.action.LoginAction">
+    	<property name="loginDao" ref="loginDao"></property>
+    </bean> 
+ 
+  	<bean id="loginDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.wzuden.resume.dao.ILoginDao"/>  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+
+	<!-- 提交基本信息模块 -->
+	<bean id="baseInfoAction" class="com.wzuden.resume.action.BaseInfoAction">
+		<property name="baseInfoDao" ref="baseInfoDao"></property>
+	</bean>
+ 
+ 	<bean id="baseInfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.wzuden.resume.dao.IBaseInfoDao"/>  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+ 
+    <!-- 登录状态过滤器 -->
+    <bean id="loginFilter" class="com.wzuden.resume.filter.LoginFilter">
+    </bean>
+     
+  	<!-- 配置log4j -->
+  	
+  	
+  	<!-- 配置数据源属性文件 -->
+  	<bean id="propertyConfigurer" 
+  		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  		<property name="location">
+  			<value>classpath:jdbc.properties</value>
+  		</property>
+  	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" 
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- 指定连接数据库的JDBC驱动 -->
+		<property name="driverClassName">
+			<value>${db.driver}</value>
+		</property>
+		<!-- 连接数据库的url -->
+		<property name="url">
+			<value>${db.url}</value>
+		</property>
+		<!-- 连接数据库的用户名 -->
+		<property name="username">
+			<value>${db.username}</value>
+		</property>
+		<!-- 连接数据库的密码 -->
+		<property name="password">
+			<value>${db.password}</value>
+		</property>
+	</bean>
+	
+	<!-- 配置sqlsession -->
+	<bean id="sqlSessionFactory" 
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource"/>
+		
+		<property name="configLocation" value="classpath:mybatis_config.xml"></property>
+	</bean>
+	
+</beans>

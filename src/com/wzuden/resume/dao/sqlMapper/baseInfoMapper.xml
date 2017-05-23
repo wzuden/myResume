@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
+<mapper namespace="com.wzuden.resume.dao.IBaseInfoDao">    
+    
+    <!-- 添加基本信息 -->  
+    <select id="insertBaseInfo" parameterType="map">  
+        insert into tab_baseinfo
+        values
+        (
+        	#{username},#{name},#{gender},#{birthday},#{city},#{cellphone},#{email}
+        ) 
+    </select> 
+</mapper>

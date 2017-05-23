@@ -1,0 +1,45 @@
+#wrapper{
+	width: 960px;
+	height: 600px;
+	margin: 10px auto;
+	background: url(../images/bg.jpeg) no-repeat;
+	z-index: 60;
+	position: relative;
+}
+.mask{
+	width:400px;
+	height:300px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -150px;
+	z-index: 1000;
+}
+.submit{
+	margin-top: 20px;
+	padding-left: 5px;
+	position: relative;
+
+
+}
+.submit .password{
+	color: red;
+}
+.submit .submit-btn{
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border:none;
+	color: #fff;
+    letter-spacing: 1px;
+    background: #3385ff;
+    border-bottom: 1px solid #2d78f4;
+}
+.mask p{
+  text-align: center;
+  padding-top: 28px;
+}
