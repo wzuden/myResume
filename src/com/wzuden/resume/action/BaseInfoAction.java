@@ -1,5 +1,7 @@
 package com.wzuden.resume.action;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
@@ -8,6 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.wzuden.resume.action.fo.BaseInfo;
 import com.wzuden.resume.dao.IBaseInfoDao;
+import com.wzuden.resume.serv.BaseInfoServ;
 
 /**
  * 处理基本信息
@@ -26,10 +29,23 @@ public class BaseInfoAction extends ActionSupport implements ModelDriven<BaseInf
 	private static final long serialVersionUID = -339474404090919580L;
 	private BaseInfo baseInfo;
 	
-	private IBaseInfoDao baseInfoDao;
+	public BaseInfo getBaseInfo()
+	{
+		return baseInfo;
+	}
 	
-	@Override
-	public String execute() throws Exception
+	public void setBaseInfo(BaseInfo baseInfo)
+	{
+		this.baseInfo = baseInfo;
+	}
+	/**
+	 * 业务层的引用
+	 */
+	private BaseInfoServ serv;
+	
+//	private IBaseInfoDao baseInfoDao;
+	
+	public String init() throws Exception
 	{
 		System.out.println("enter baseinfo action...");
 		String name = baseInfo.toString();
@@ -38,7 +54,28 @@ public class BaseInfoAction extends ActionSupport implements ModelDriven<BaseInf
 		String username = (String) request.getSession().getAttribute("username");
 		System.out.println(username);
 		baseInfo.setUsername(username);
-		baseInfoDao.insertBaseInfo(baseInfo);
+		/*
+		 * 需要判断页面是否有值，来决定是执行插入操作还是修改操作
+		 * 先进行查询
+		 */
+		
+		serv.insertBaseInfo(baseInfo);
+		return "success";
+	}
+
+	/**
+	 * 初始化查询操作
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String query() throws Exception{
+		System.out.println("enter BaseInfoAction query...");
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String username = (String) request.getSession().getAttribute("username");
+		System.out.println(username);
+		baseInfo = serv.query(username);
+		System.out.println("baseInfo="+baseInfo);
 		return "success";
 	}
 
@@ -50,11 +87,10 @@ public class BaseInfoAction extends ActionSupport implements ModelDriven<BaseInf
 		}
 		return baseInfo;
 	}
-
 	
-	public void setBaseInfoDao(IBaseInfoDao baseInfoDao)
+	public void setServ(BaseInfoServ serv)
 	{
-		this.baseInfoDao = baseInfoDao;
+		this.serv = serv;
 	}
 	
 }

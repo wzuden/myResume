@@ -4,19 +4,40 @@
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
+	<!-- 设置编码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
 	<!-- 设置可以使用动态方法调用 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 	<!-- 与spring整合 -->
 	<constant name="struts.objectFactory" value="spring" />
 	
-	<package name="default" extends="struts-default" namespace="/">
+	<package name="ajax-default" extends="struts-default">
+		<result-types>
+			<result-type name="ajax" class="com.wzuden.resume.result.AJAXResult"></result-type>
+		</result-types>
+		<global-results>
+            <result name="ajax" type="ajax" />
+        </global-results>
+	</package>
+	
+	<package name="default" extends="ajax-default" namespace="/">
 		<action name="login" class="loginAction">
-			<result name="success">/index.html</result>
-			<result name="fail">/login.html</result>
+			<result name="success">/jsps/index.jsp</result>
+			<result name="fail">/login.jsp</result>
 		</action>
+		<!-- 注册查询 -->
+		<action name="regist*" class="registAction" method="{1}">
+			<result name="ajax" type="ajax"></result>
+			<result name="success">/login.jsp</result>
+		</action>
+	</package>
 		
+	<package name="baseInfop" extends="json-default">
 		<action name="baseInfo" class="baseInfoAction">
-			<result name="success">/index.html</result>
-		</action>
+			<result type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+			</result>
+		</action>	
 	</package>
 </struts>

@@ -5,9 +5,11 @@
 <configuration>  
     <typeAliases>  
        <typeAlias alias="user" type="com.wzuden.resume.action.fo.User"/> 
+       <typeAlias alias="baseInfo" type="com.wzuden.resume.action.fo.BaseInfo"/>
     </typeAliases>  
     <mappers>  
           <mapper resource="com/wzuden/resume/dao/sqlMapper/loginMapper.xml"/>
           <mapper resource="com/wzuden/resume/dao/sqlMapper/baseInfoMapper.xml"/>
+          <mapper resource="com/wzuden/resume/dao/sqlMapper/registMapper.xml"/>
     </mappers>  
 </configuration>

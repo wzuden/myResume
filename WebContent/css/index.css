@@ -146,7 +146,7 @@ p#back-to-top a{
     color:#d1d1d1;
     display:block;
     width:64px;
-    /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+    /*浣跨敤CSS3涓殑transition灞炴�х粰璺宠浆閾炬帴涓殑鏂囧瓧娣诲姞娓愬彉鏁堟灉*/
     -moz-transition:color 1s;
     -webkit-transition:color 1s;
     -o-transition:color 1s;
@@ -158,7 +158,7 @@ p#back-to-top a span{
     height:64px;
     width:56px;
     margin-bottom:5px;
-    /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+    /*浣跨敤CSS3涓殑transition灞炴�х粰<span>鏍囩鑳屾櫙棰滆壊娣诲姞娓愬彉鏁堟灉*/
     -moz-transition:background 1s;
     -webkit-transition:background 1s;
     -o-transition:background 1s;
@@ -191,7 +191,7 @@ p#back-to-top a:hover{
 
 }
 .wrapper .main-edit #basicInfo{
-  height: 200px;
+  height: 300px;
   margin-top: 10px;
  }
 .wrapper .main-edit #intern-exp{

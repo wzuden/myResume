@@ -3,12 +3,44 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
 <mapper namespace="com.wzuden.resume.dao.IBaseInfoDao">    
     
+    <resultMap type="baseInfo" id="baseInfoMap">  
+        <result property="name" column="name"/>  
+        <result property="gender" column="gender"/>     
+        <result property="birthday" column="birthday"/>
+        <result property="city" column="city"/>
+        <result property="cellphone" column="cellphone"/>
+        <result property="email" column="email"/>
+    </resultMap>
+    
     <!-- 添加基本信息 -->  
-    <select id="insertBaseInfo" parameterType="map">  
+    <insert id="insertBaseInfo" parameterType="map">  
         insert into tab_baseinfo
         values
         (
         	#{username},#{name},#{gender},#{birthday},#{city},#{cellphone},#{email}
         ) 
-    </select> 
+    </insert>
+    <!-- 进行修改操作 -->
+     <update id="updateBaseInfo" parameterType="map">
+     	update tab_baseinfo
+     	set
+     	name = #{name},
+     	gender = #{gender},
+     	birthday = #{birthday},
+     	city = #{city},
+     	cellphone = #{cellphone},
+     	email = #{email}
+     	where username = #{username}
+     </update>
+     
+     <!-- 初始化查询 -->
+     <select id="query" parameterType="String" resultMap="baseInfoMap">
+     	select name,gender,birthday,city,cellphone,email 
+     	from tab_baseinfo
+     	where username=#{username} 
+     </select>
+     
+     <select id="getTest" parameterType="String" resultType="String">
+     	select name from tab_baseinfo where username = #{username}
+     </select>
 </mapper>

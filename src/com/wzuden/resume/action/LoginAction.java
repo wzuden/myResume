@@ -29,21 +29,41 @@ public class LoginAction extends ActionSupport
 	
 	private ILoginDao loginDao;
 	
-	@Override
+	private String tips;
+	
 	public String execute() throws Exception
 	{
 		System.out.println("enter loginaction...");
 		List list = loginDao.getUser(user.getUsername());
-		User obj = (User) list.get(0);
+		System.out.println("list length="+list.size());
+		User obj = null;
+		if(list.size() != 0){
+			obj = (User) list.get(0);
+		}else{
+			tips = "用户名或密码错误！";
+			return "fail";
+		}
+		
 		if(user.getPassword().equals(obj.getPassword())){
 			/*登录成功，设置session属性，便于过滤器进行识别是否登录*/
 			HttpServletRequest request = ServletActionContext.getRequest();
 			request.getSession().setAttribute("username", user.getUsername());
 			return SUCCESS;
 		}else{
+			tips = "用户名或密码错误！";
 			return "fail";
 		}
 		
+	}
+	
+	public String getTips()
+	{
+		return tips;
+	}
+	
+	public void setTips(String tips)
+	{
+		this.tips = tips;
 	}
 
 	public void setUser(User user)
