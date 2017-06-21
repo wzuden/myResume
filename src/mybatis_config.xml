@@ -6,10 +6,12 @@
     <typeAliases>  
        <typeAlias alias="user" type="com.wzuden.resume.action.fo.User"/> 
        <typeAlias alias="baseInfo" type="com.wzuden.resume.action.fo.BaseInfo"/>
+       <typeAlias alias="internExp" type="com.wzuden.resume.action.fo.InternExp"/>
     </typeAliases>  
     <mappers>  
           <mapper resource="com/wzuden/resume/dao/sqlMapper/loginMapper.xml"/>
           <mapper resource="com/wzuden/resume/dao/sqlMapper/baseInfoMapper.xml"/>
           <mapper resource="com/wzuden/resume/dao/sqlMapper/registMapper.xml"/>
+          <mapper resource="com/wzuden/resume/dao/sqlMapper/internExpMapper.xml"/>
     </mappers>  
 </configuration>

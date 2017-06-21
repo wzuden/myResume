@@ -39,6 +39,23 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
     </bean>
  
+ 
+ 	<!-- 提交实习经历模块 -->
+	<bean id="internExpAction" class="com.wzuden.resume.action.InternExpAction">
+		<property name="serv" ref="internExpServ"></property>
+	</bean>
+ 
+ 	<!-- 实习经历的业务类 -->
+ 	<bean id="internExpServ" class="com.wzuden.resume.serv.InternExpServ">
+		<property name="internExpDao" ref="internExpDao"></property>
+	</bean>
+	
+ 	<!-- 实习经历的数据层 -->
+ 	<bean id="internExpDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+        <property name="mapperInterface" value="com.wzuden.resume.dao.IInternExpDao"/>  
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean>
+ 
     <!-- 登录状态过滤器 -->
     <bean id="loginFilter" class="com.wzuden.resume.filter.LoginFilter">
     </bean>
